@@ -15,9 +15,13 @@ devtools::install_github("hadley/fueleconomy")
 
 
 # Which Accura model has the best hwy MPG in 2015? (nesting functions)
-
+Acura<- select(filter(vehicles, make == 'Acura' & year == 2015 & max(hwy)), model)
 
 # Which Accura model has the best hwy MPG in 2015? (pipe operator)
+best.hwy<- filter(vehicles, make == 'Acura' & year == 2015) %>% 
+  filter(vehicles, hwy == max(hwy))
+  select(vehicles, model)
+  
 
 
 ### Bonus ###
